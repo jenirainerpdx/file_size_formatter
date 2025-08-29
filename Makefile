@@ -24,6 +24,10 @@ lint: ## Check code style and check for errors and warnings. Also checks formatt
 	cargo fmt -- --check
 	cargo clippy -- -D warnings
 
+doc: ## Generate documentation
+	@rustup component add rust-docs 2> /dev/null
+	cargo doc
+
 version: ## Increment the version number - not recommended. Prefer using cargo release.
 	@echo "Current version is $(shell cargo pkgid | sed 's/.*#//')"
 	@read -p "Enter new version: " version; \
